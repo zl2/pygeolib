@@ -4,6 +4,41 @@ pygeolib: Python library and CLI for computations on geographical data, with emp
 Usage
 -----
 
+### Quickstart without OSM file
+
+		$ python
+		>>> from route import route
+		>>> G = {123: {456: 0.02, 789: 0.03},
+		...      456: {123: 0.02, 101112: 0.06},
+		...      789: {101112: 0.01},
+		...      101112: {123: 0.01}}
+		>>> D,P,v = route(G,123)
+		>>> D[101112] #distance from 123 to 101112
+		0.040000000000000001
+		>>> D
+		{456: 0.02, 101112: 0.040000000000000001, 123: 0, 789: 0.029999999999999999}
+		>>> P
+		{456: 123, 101112: 789, 789: 123}
+		>>> v
+		101112
+
+### Quickstart with OSM file
+
+Determines the distance from the source `1000001` to targets `1000002` and `1000003`
+
+    $ python loadOsm.py file.osm
+		$ python
+    >>> from route import route
+    >>> from data import data
+    >>> source = 1000001
+		>>> D,P,v = route(data.G,source)
+		>>> target1 = 1000002
+		>>> D[target1]
+    19.250000666714794
+		>>> target2 = 1000003
+		>>> D[target2]
+		12.052146869717513
+
 ### Starting with OSM file
 
 You need either some data from [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Downloading_data) or weighted graphs in Python pickle format (second method not yet documented). If starting with OSM maps file.osm, run
