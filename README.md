@@ -57,7 +57,7 @@ More advanced features are not accessible via the command-line interface for the
 
     $ python
 
-    >>> from route import preproute,route
+    >>> import route
     >>> from data import data
     >>> sources = [10000001, 10000002, 10000003, 10000005, 10000008]
     >>> newnodes = route.preproute(data.G,data.nodes,data.rnodes,sources)
