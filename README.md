@@ -4,10 +4,15 @@ pygeolib: Python library and CLI for computations on geographical data, with emp
 Usage
 -----
 
+### Starting with OSM file
+
 You need either some data from [OpenStreetMap](http://wiki.openstreetmap.org/wiki/Downloading_data) or weighted graphs in Python pickle format (second method not yet documented). If starting with OSM maps file.osm, run
 
     python loadOsm.py file.osm
-    python build.py graph
+
+It is usually a good idea to pick out a single large connected component to work with. Here we pick the one containing the node with id 10000001.
+
+    python build.py graph 10000001
 
 Then, to get the shortest path between nodes numbered `12345` and `67890`, run
 
